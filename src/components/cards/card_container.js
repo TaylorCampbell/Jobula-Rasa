@@ -1,18 +1,29 @@
 import React, { Component } from "react";
 import "./cards.css";
 
-class App extends Component {
+import { FirebaseContext } from "../Firebase";
+import { AuthUserContext, withAuthorization } from "../Session";
+
+class Home extends Component {
   render() {
     return (
-      <div className="card-container">
-        <div className="test-card" />
-        <div className="test-card" />
-        <div className="test-card" />
-        <div className="test-card" />
-        <div className="test-card" />
-      </div>
+      <AuthUserContext.Consumer>
+        {authUser => (
+          <FirebaseContext.Consumer>
+            {firebase => {
+              return (
+                <div className="test-card">
+                  I am authenticated? {this.props.authUser ? "Yes" : "Nah"}
+                </div>
+              );
+            }}
+          </FirebaseContext.Consumer>
+        )}
+      </AuthUserContext.Consumer>
     );
   }
 }
 
-export default App;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Home);

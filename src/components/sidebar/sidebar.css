@@ -2,7 +2,7 @@
   position: fixed;
   display: inline;
   width: 64px;
-  min-height: 100vh;
+  height: 100%;
   background-color: #6dc9a6;
 }
 

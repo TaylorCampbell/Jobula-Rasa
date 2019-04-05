@@ -6,3 +6,9 @@ html {
 .main-container {
   display: inline-block;
 }
+
+.component-container {
+  margin-left: 72px; /*  64px sidebar plus 8px margin */
+  display: inline-flex;
+  flex-wrap: wrap;
+}
