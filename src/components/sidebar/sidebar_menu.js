@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; 
 import "./sidebar.css";
 import SignOutButton from "../SignOut/index.js";
 
