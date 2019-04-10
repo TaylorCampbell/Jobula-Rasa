@@ -1,3 +1,7 @@
+**_THIS PROJECT IS IN DEVELOPMENT AS PART OF A SCHOOL PROJECT_**
+
+---
+
 # Jobula Rasa
 
 Tabula rasa is a Latin phrase often translated as "clean slate"... When you're ready for a 'clean slate' in your first job or new position, use Jobula to stay organized.
