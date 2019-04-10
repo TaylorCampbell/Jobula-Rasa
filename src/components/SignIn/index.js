@@ -4,11 +4,14 @@ import { compose } from "recompose";
 
 import { SignUpLink } from "../SignUp";
 import { withFirebase } from "../Firebase";
-import * as ROUTES from "../../lib/constant/routes"
+import * as ROUTES from "../../lib/constant/routes";
+
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
+    <h1>Sign In</h1>
     <SignInForm />
     <SignUpLink />
   </div>
@@ -17,7 +20,7 @@ const SignInPage = () => (
 const INITIAL_STATE = {
   email: "",
   password: "",
-  error: null,
+  error: null
 };
 
 class SignInFormBase extends Component {
@@ -29,7 +32,6 @@ class SignInFormBase extends Component {
 
   onSubmit = event => {
     const { email, password } = this.state;
-
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
@@ -44,7 +46,7 @@ class SignInFormBase extends Component {
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.id]: event.target.value });
   };
 
   render() {
@@ -53,34 +55,50 @@ class SignInFormBase extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <Form onSubmit={this.onSubmit}>
+        <Form.Group controlId="email">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" onChange={this.onChange} defaultValue={email}/>
+          {/* <Form.Text className="text-muted" >
+            We'll never share your email with anyone else.
+          </Form.Text> */}
+        </Form.Group>
+        <Form.Group controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" onChange={this.onChange} defaultValue={password}/>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+      // <form onSubmit={this.onSubmit}>
+      //   <input
+      //     name="email"
+      //     value={email}
+      //     onChange={this.onChange}
+      //     type="text"
+      //     placeholder="Email Address"
+      //   />
+      //   <input
+      //     name="password"
+      //     value={password}
+      //     onChange={this.onChange}
+      //     type="password"
+      //     placeholder="Password"
+      //   />
+      //   <button disabled={isInvalid} type="submit">
+      //     Sign In
+      //   </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+      //   {error && <p>{error.message}</p>}
+      // </form>
     );
   }
 }
 
 const SignInForm = compose(
   withRouter,
-  withFirebase,
+  withFirebase
 )(SignInFormBase);
 
 export default SignInPage;
