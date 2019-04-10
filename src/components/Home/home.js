@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./cards.css";
+import "./home.css";
 
 import { FirebaseContext } from "../Firebase";
 import { AuthUserContext, withAuthorization } from "../Session";

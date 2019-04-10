@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { withAuthentication } from "./components/Session"; // This will include withFirebase()
 
 import Sidebar from "./components/sidebar/sidebar.js";
-import Home from "./components/cards/card_container.js";
+import Home from "./components/Home/home.js";
 import SignUpPage from "./components/SignUp";
 import SignInPage from "./components/SignIn";
 
