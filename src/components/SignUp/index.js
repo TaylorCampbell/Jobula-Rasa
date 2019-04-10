@@ -5,6 +5,9 @@ import { compose } from 'recompose';
 import { FirebaseContext, withFirebase } from '../Firebase';
 import * as ROUTES from "../../lib/constant/routes";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 const SignUpPage = () => (
   <div>
     <h1>SignUp</h1>
@@ -16,7 +19,7 @@ const SignUpPage = () => (
 
 // Creating an object to deconstruct for easy reset of state
 const INITIAL_STATE = {
-  username: "",
+  name: "",
   email: "",
   passwordOne: "",
   passwordTwo: "",
@@ -47,56 +50,46 @@ class SignUpFormBase extends Component {
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.id]: event.target.value });
   };
 
   render() {
-    const { username, email, passwordOne, passwordTwo, error } = this.state;
+    const { name, email, passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
-      username === "";
+      name === "";
+
+    console.log(this.state);
+    console.log(isInvalid);
 
     return (
-      <div className="component-container">
-        <form onSubmit={this.onSubmit}>
-          <input
-            name="username"
-            value={username}
-            onChange={this.onChange}
-            type="text"
-            placeholder="Full Name"
-          />
-          <input
-            name="email"
-            value={email}
-            onChange={this.onChange}
-            type="text"
-            placeholder="Email Address"
-          />
-          <input
-            name="passwordOne"
-            value={passwordOne}
-            onChange={this.onChange}
-            type="password"
-            placeholder="Password"
-          />
-          <input
-            name="passwordTwo"
-            value={passwordTwo}
-            onChange={this.onChange}
-            type="password"
-            placeholder="Confirm Password"
-          />
-          <button type="submit" disabled={isInvalid}>
-            Sign Up
-          </button>
-
-          {error && <p>{error.message}</p>}
-        </form>
-      </div>
+      <Form onSubmit={this.onSubmit}>
+        <Form.Group controlId="name">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Full Name" onChange={this.onChange} defaultValue={name}/>
+          <Form.Text className="text-muted" >
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+        <Form.Group controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="Email" onChange={this.onChange} defaultValue={email}/>
+        </Form.Group>
+        <Form.Group controlId="passwordOne">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" onChange={this.onChange} defaultValue={passwordOne}/>
+        </Form.Group>
+        <Form.Group controlId="passwordTwo">
+          <Form.Control type="password" placeholder="Confirm Password" onChange={this.onChange} defaultValue={passwordTwo}/>
+        </Form.Group>
+        <Button variant="primary" type="submit" disabled={isInvalid}>
+          Submit
+        </Button>
+        {error && <Form.Control.Feedback type="invalid">{error.message}</Form.Control.Feedback>}
+      </Form>
     );
   }
 }
