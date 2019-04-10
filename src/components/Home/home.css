@@ -1,0 +1,15 @@
+.card-container {
+  margin-left: 72px; /*  64px sidebar plus 8px margin */
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.test-card {
+  margin: 8px;
+  height: 300px;
+  width: 33.33%;
+  width: calc((100% / 3) - 16px);
+  min-width: 350px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
