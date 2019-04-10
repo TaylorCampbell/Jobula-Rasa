@@ -18,11 +18,11 @@ Build a tool that will track data about active job applications. We aim to creat
 
 ## Design
 
-![Screenshot of Jobula View 1](https://imgur.com/QDLTWvN "Jobula Home 1")
+![Screenshot of Jobula View 1](https://i.imgur.com/QDLTWvN.png)
 
-![Screenshot of Jobula View 2](https://imgur.com/aODRqBJ "Jobula Home 2")
+![Screenshot of Jobula View 2](https://i.imgur.com/aODRqBJ.png)
 
-![Screenshot of Jobula View 3](https://imgur.com/8m37Kxi "Jobula Home 3")
+![Screenshot of Jobula View 3](https://i.imgur.com/8m37Kxi.png)
 
 ## Tools and Libraries Used
 
