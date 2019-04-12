@@ -8,7 +8,9 @@ html {
 }
 
 .component-container {
-  margin-left: 72px; /*  64px sidebar plus 8px margin */
-  display: inline-flex;
-  flex-wrap: wrap;
+  height: 100vh;
+}
+
+.sidebar-col {
+  padding-left: 0px;
 }

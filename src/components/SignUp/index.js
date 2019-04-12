@@ -1,21 +1,14 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from 'recompose';
-
-import { FirebaseContext, withFirebase } from '../Firebase';
+import { withFirebase } from '../Firebase';
 import * as ROUTES from "../../lib/constant/routes";
+import withCard from "../FormCard"
+import withModal from "../Modal/FormModalSignUp"
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
-const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <FirebaseContext.Consumer>
-      {firebase => <SignUpForm firebase={firebase} />}
-    </FirebaseContext.Consumer>
-  </div>
-);
+import Spinner from "react-bootstrap/Spinner";
 
 // Creating an object to deconstruct for easy reset of state
 const INITIAL_STATE = {
@@ -30,16 +23,18 @@ class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    this.state = { ...INITIAL_STATE,
+      isLoading: false
+    };
   }
 
   onSubmit = event => {
     const { email, passwordOne } = this.state;
-
+    this.setState({ isLoading: true });
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ ...INITIAL_STATE, isLoading: false });
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
@@ -54,7 +49,7 @@ class SignUpFormBase extends Component {
   };
 
   render() {
-    const { name, email, passwordOne, passwordTwo, error } = this.state;
+    const { name, email, passwordOne, passwordTwo, error, isLoading } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
@@ -70,9 +65,6 @@ class SignUpFormBase extends Component {
         <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" placeholder="Full Name" onChange={this.onChange} defaultValue={name}/>
-          <Form.Text className="text-muted" >
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
         <Form.Group controlId="email">
           <Form.Label>Email</Form.Label>
@@ -85,8 +77,8 @@ class SignUpFormBase extends Component {
         <Form.Group controlId="passwordTwo">
           <Form.Control type="password" placeholder="Confirm Password" onChange={this.onChange} defaultValue={passwordTwo}/>
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={isInvalid}>
-          Submit
+        <Button variant="primary" varient="outline" type="submit" disabled={isInvalid}>
+          {isLoading ? <Spinner animation="border" variant="light" size="sm" /> : "SIGN IN"}
         </Button>
         {error && <Form.Control.Feedback type="invalid">{error.message}</Form.Control.Feedback>}
       </Form>
@@ -108,6 +100,14 @@ const SignUpForm = compose(
     withFirebase,
   )(SignUpFormBase);
 
-export default SignUpPage;
+const SignUpFormInCard = compose(
+  withCard
+)(SignUpForm);
 
-export { SignUpForm, SignUpLink };
+const SignUpFormInModal = compose(
+  withModal
+)(SignUpForm);
+
+export default SignUpForm;
+
+export { SignUpForm, SignUpLink, SignUpFormInCard, SignUpFormInModal };
