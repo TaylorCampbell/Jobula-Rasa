@@ -6,7 +6,16 @@
   background-color: #6dc9a6;
 }
 
-.sidebar-menu-container {
+.sidebar-menu-container__upper {
+  text-align: center;
+  display: block;
+  width: 50px;
+  height: auto;
+  position: fixed;
+  padding: 0px 7px 16px 7px;
+  overflow-wrap: break-word;
+}
+.sidebar-menu-container__lower {
   text-align: center;
   display: block;
   width: 50px;
@@ -15,4 +24,8 @@
   bottom: 0px;
   padding: 0px 7px 16px 7px;
   overflow-wrap: break-word;
+}
+
+.sidebar-menu__button {
+  cursor: pointer;
 }

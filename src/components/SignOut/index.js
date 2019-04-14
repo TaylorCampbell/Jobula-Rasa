@@ -2,12 +2,10 @@ import React from "react";
 
 import { withFirebase } from "../Firebase";
 
-import Button from "react-bootstrap/Button";
+import LogOutIcon from "react-ionicons/lib/MdLogOut";
 
 const SignOutButton = ({ firebase }) => (
-  <Button variant="link" onClick={firebase.doSignOut}>
-    Sign Out?
-  </Button>
+  <LogOutIcon className={"sidebar-menu__button"} onClick={firebase.doSignOut} fontSize="50px" color="#ffffff" />
 );
 
 export default withFirebase(SignOutButton);
