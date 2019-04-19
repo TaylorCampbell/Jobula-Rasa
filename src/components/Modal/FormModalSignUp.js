@@ -3,8 +3,6 @@ import React from "react"
 import { SignInLink } from "../SignIn";
 import Modal from "react-bootstrap/Modal";
 
-import { primaryColor } from "../../assets/Styles";
-
 const FormModalSignUp = Component => props => {
       return (
         <Modal
@@ -14,7 +12,7 @@ const FormModalSignUp = Component => props => {
           centered
           // animation={false} - Broken rn, watch the BS for React github
         >
-          <Modal.Header style={{ backgroundColor: primaryColor }}>
+          <Modal.Header>
             <Modal.Title id="contained-modal-title-vcenter">
               Sign Up
             </Modal.Title>
