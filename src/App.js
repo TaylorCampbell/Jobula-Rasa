@@ -5,6 +5,7 @@ import { withAuthentication } from "./components/Session"; // This will include 
 
 import Sidebar from "./components/Sidebar/sidebar.js";
 import Home from "./components/Home/home.js";
+import Settings from "./components/Settings/settings.js";
 import { SignUpFormInModal } from "./components/SignUp";
 import { SignInFormInModal } from "./components/SignIn";
 
@@ -25,6 +26,8 @@ class App extends Component {
               <div className="component-container">
                 <Switch>
                   <Route path="/home" component={Home} />
+                  <Route path="/settings" component={Settings} />
+                  <Route path="/profile" component={Settings} />
                   <Route path="/signup" component={SignUpFormInModal} />
                   <Route path="/signin" component={SignInFormInModal} />
                 </Switch>
