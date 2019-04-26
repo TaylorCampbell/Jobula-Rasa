@@ -19,7 +19,9 @@ class App extends Component {
       <BrowserRouter>
         <Container fluid>
           <Row>
+            <Col className="sidebar-col">
               <Sidebar />
+            </Col>
             <Col xs={11} className="main-col">
               <div className="component-container">
                 <Switch>

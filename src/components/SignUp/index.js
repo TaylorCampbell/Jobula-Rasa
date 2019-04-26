@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from "../../lib/constant/routes";
 import withCard from "../FormCard"
-import withModal from "../Modal/FormModalSignUp"
+import withModal from "../Modal/formModalSignUp"
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";

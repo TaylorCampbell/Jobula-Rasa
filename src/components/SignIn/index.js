@@ -5,7 +5,7 @@ import { SignUpLink } from "../SignUp";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../lib/constant/routes";
 import withCard from "../FormCard";
-import withModal from "../Modal/FormModalSignIn";
+import withModal from "../Modal/formModalSignIn";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
