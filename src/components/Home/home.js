@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { FirebaseContext } from "../Firebase";
 import { AuthUserContext, withAuthorization } from "../Session";
+import AddCardButton from "../Card/addCardButton";
 
 class Home extends Component {
   constructor(props) {
@@ -15,9 +16,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        Home
-      </div>
+      <AddCardButton />
     );
   }
 }

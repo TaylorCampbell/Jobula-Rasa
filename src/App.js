@@ -19,10 +19,8 @@ class App extends Component {
       <BrowserRouter>
         <Container fluid>
           <Row>
-            <Col xs={1} className="sidebar-col">
               <Sidebar />
-            </Col>
-            <Col xs={11}>
+            <Col xs={11} className="main-col">
               <div className="component-container">
                 <Switch>
                   <Route path="/home" component={Home} />

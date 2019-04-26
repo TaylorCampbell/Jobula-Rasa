@@ -6,8 +6,8 @@ import ProfileIcon from "react-ionicons/lib/MdContact";
 import IconButton from "../../assets/Styles/IconButton";
 
 const ProfileButton = ({ history }) => (
-  <IconButton>
-    <ProfileIcon className={"sidebar-menu__button"} onClick={() => { history.push("/profile"); }} fontSize="36px" color="#ffffff" />
+  <IconButton aria-label={"profile"} onClick={() => { history.push("/profile"); }}>
+    <ProfileIcon className={"sidebar-menu__button"} fontSize="36px" color="#ffffff" />
   </IconButton>
 );
 
